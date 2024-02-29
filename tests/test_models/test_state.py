@@ -6,9 +6,12 @@ import unittest
 from models.state import State
 
 class TestStateModel(unittest.TestCase):
-	def setUp(self):
-		self.state = State()
-		self.state.name = "Good"
-	
-	def test_name(self):
-		self.assertEqual(self.state.name, "Good")
+    def setUp(self):
+        self.state = State()
+        self.state.name = "Good"
+
+    def test_type(self):
+        self.assertIsInstance(State.name, str)
+
+    def test_name(self):
+        self.assertEqual(self.state.name, "Good")

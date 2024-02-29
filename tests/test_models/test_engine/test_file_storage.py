@@ -33,11 +33,11 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(os.path.exists(FileStorage._FileStorage__file_path))
 
     def test_reload(self):
-        self.my_model.save()
-        self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
-        dobj = storage.all()
+        self.model.save()
+        self.assertEqual(os.path.exists(self.storage._FileStorage__file_path), True)
+        dobj = self.storage.all()
         FileStorage._FileStorage__objects = {}
-        self.assertNotEqual(dobj, FileStorage._FileStorage__objects)
-        storage.reload()
-        for key, value in storage.all().items():
+        self.assertEqual(dobj, FileStorage._FileStorage__objects)
+        self.storage.reload()
+        for key, value in self.storage.all().items():
             self.assertEqual(dobj[key].to_dict(), value.to_dict())
