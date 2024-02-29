@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""City model test"""
+"""Review model test"""
 
 
 import unittest
