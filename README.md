@@ -1,4 +1,4 @@
-# 0x00. AirBnB clone - The console
+# AirBnB clone - The console
 
 <img align="center" src="https://i.ibb.co/d5N85Nh/hbnb.png">
 
