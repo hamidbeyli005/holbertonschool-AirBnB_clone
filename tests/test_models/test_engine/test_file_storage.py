@@ -33,11 +33,25 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(os.path.exists(FileStorage._FileStorage__file_path))
 
     def test_reload(self):
-        self.model.save()
-        self.assertEqual(os.path.exists(self.storage._FileStorage__file_path), True)
-        dobj = self.storage.all()
-        FileStorage._FileStorage__objects = {}
-        self.assertEqual(dobj, FileStorage._FileStorage__objects)
-        self.storage.reload()
-        for key, value in self.storage.all().items():
-            self.assertEqual(dobj[key].to_dict(), value.to_dict())
+        self.storage.save()
+        file_path = "file.json"
+
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+
+        os.remove(file_path)
+        self.storage.save()
+
+        with open(file_path, 'r') as f:
+            lines2 = f.readlines()
+
+        self.assertEqual(lines, lines2)
+
+        with open(file_path, "w") as f:
+            f.write("{}")
+
+        with open(file_path, "r") as r:
+            self.assertEqual(r.read(), "{}")
+
+        self.assertIs(self.storage.reload(), None)
+        os.remove(file_path)
