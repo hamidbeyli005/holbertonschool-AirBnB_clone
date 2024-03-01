@@ -34,7 +34,7 @@ Clone this repository in your terminal:
 
 ```
 $ git clone https://github.com/hamidbeyli005/holbertonschool-AirBnB_clone
-$ cd AirBnB_clone
+$ cd holbertonschool-AirBnB_clone
 ```
 
 ## Execution
