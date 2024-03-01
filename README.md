@@ -33,7 +33,7 @@ Do you remember the Shell? Its exactly the same but limited to a specific use-ca
 Clone this repository in your terminal:
 
 ```
-$ git clone https://github.com/02KellyV/AirBnB_clone.git
+$ git clone https://github.com/hamidbeyli005/holbertonschool-AirBnB_clone
 $ cd AirBnB_clone
 ```
 
