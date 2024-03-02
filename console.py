@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Show all objects"""
-	command = line.split()
+	command = arg.split()
         if len(command) == 0:
             print([str(obj) for obj in storage.all().values()])
             return
