@@ -132,7 +132,8 @@ class HBNBCommand(cmd.Cmd):
             "all": self.do_all,
             "show": self.do_show,
             "destroy": self.do_destroy,
-            "update": self.do_update
+            "update": self.do_update,
+            "count": self.do_count
         }
 
         if method in argdict.keys():
@@ -140,6 +141,22 @@ class HBNBCommand(cmd.Cmd):
 
         print("*** Unknown syntax: {}".format(arg))
         return False
+
+    def do_count(self, arg):
+        """Count number"""
+        args = arg.split()
+        cls_name = args[0]
+        count = 0
+        if len(args) == 1:
+            if cls_name in self.__classes:
+                for obj in storage.all().values():
+                    if obj.__class__.__name__ == cls_name:
+                        count += 1
+                print(count)
+            else:
+                print("** class name invalid **")
+        else:
+            print("** class name missing **")
 
 
 if __name__ == '__main__':
