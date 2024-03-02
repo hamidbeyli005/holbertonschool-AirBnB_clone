@@ -85,17 +85,14 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Show all objects"""
-        command = arg.split()
-        objects = storage.all()
+	command = line.split()
         if len(command) == 0:
-            for key, value in objects.items():
-                print(str(value))
-        elif command[0] not in self.__classes:
+            print([str(obj) for obj in storage.all().values()])
+            return
+        try:
+            print([str(obj) for obj in storage.all()[command[0]].values()])
+        except KeyError:
             print("** class doesn't exist **")
-        else:
-            for key, value in objects.items():
-                if key.split(".")[0] == command[0]:
-                    print(str(value))
 
     def do_update(self, arg):
         """Update instance"""
