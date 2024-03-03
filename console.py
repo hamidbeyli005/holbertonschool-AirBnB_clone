@@ -154,7 +154,7 @@ class HBNBCommand(cmd.Cmd):
                         argdict[method]("{} {} {} {}".format(
                             cls_name, id, key, value)
                         )
-                        return
+                    return
                 else:
                     id, attr_name, attr_value = all_args
                     return argdict[method]("{} {} {} {}".format(
