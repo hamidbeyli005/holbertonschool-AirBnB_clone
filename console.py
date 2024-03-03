@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Module for console program."""
 
+import json
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -128,8 +129,8 @@ class HBNBCommand(cmd.Cmd):
         command = args[1].split("(")
         method = command[0]
         passed_arg = command[1].split(")")[0]
-        all_args = passed_arg.split(",") #for update method   
-            
+        all_args = passed_arg.split(",")  # for update method
+
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
@@ -142,8 +143,24 @@ class HBNBCommand(cmd.Cmd):
             if method != "update":
                 return argdict[method]("{} {}".format(cls_name, passed_arg))
             else:
-                id, attr_name, attr_value = all_args
-                return argdict[method]("{} {} {} {}".format(cls_name, id, attr_name, attr_value))
+                if "{" in passed_arg:
+                    parts = passed_arg.split(',', 1)
+                    kwargs = parts[1].strip()
+                    kwargs = kwargs.replace("'", '"')
+                    update_dict = json.loads(kwargs)
+                    id = parts[0]
+
+                    for key, value in update_dict.items():
+                        argdict[method]("{} {} {} {}".format(
+                            cls_name, id, key, value)
+                        )
+                        return
+                else:
+                    id, attr_name, attr_value = all_args
+                    return argdict[method]("{} {} {} {}".format(
+                        cls_name, id, attr_name, attr_value)
+                    )
+
         print("*** Unknown syntax: {}".format(arg))
         return False
 
