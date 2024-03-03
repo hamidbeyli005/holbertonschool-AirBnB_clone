@@ -127,7 +127,8 @@ class HBNBCommand(cmd.Cmd):
         cls_name = args[0]
         command = args[1].split("(")
         method = command[0]
-
+        passed_arg = command[1].split(")")[0]
+        
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
@@ -137,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         }
 
         if method in argdict.keys():
-            return argdict[method]("{} {}".format(cls_name, ''))
+            return argdict[method]("{} {}".format(cls_name, passed_arg))
 
         print("*** Unknown syntax: {}".format(arg))
         return False
