@@ -40,6 +40,7 @@
     width: 25%;
     margin-left: 40px;
     position: relative;
+    z-index: 999;
 }
 
 /* Locations border */
