@@ -2,6 +2,12 @@
  * === Global style ===
  */
 
+ /* Resetting margins and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /* Body style */
 body {
     color: #484848;
