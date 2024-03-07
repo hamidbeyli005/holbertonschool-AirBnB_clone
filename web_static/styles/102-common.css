@@ -1,0 +1,22 @@
+/*
+ * === Global style ===
+ */
+
+ /* Resetting margins and padding for all elements */
+ * {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body style */
+body {
+    color: #484848;
+    font: 14px Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Container style */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 6%;
+}
