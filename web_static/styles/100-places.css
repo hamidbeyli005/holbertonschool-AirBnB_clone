@@ -17,6 +17,7 @@
   border-radius: 4px;
   display: inline-block;
   text-align: left;
+  vertical-align: text-top;
 }
 
 /* Heading 1 style */
